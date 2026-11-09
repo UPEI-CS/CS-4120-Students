@@ -50,7 +50,7 @@ plt.figure(figsize=(7,4)); plt.scatter(X_dev.Recency, X_dev.Inactivity, c=y_dev,
 plt.title(f'Two inputs; PROXY_NOISE = {PROXY_NOISE:.2f}'); finish('correlated_inputs')
 feature_options = [list(X.columns), ['Recency','Complaints','Tenure','Noise'],
                    ['Inactivity','Complaints','Tenure','Noise'], ['Complaints','Tenure','Noise']]
-option_names = ['Both signals','Recency only','Inactivity only','Neither signal']
+option_names = ['Recency + inactivity','Recency only','Inactivity only','Exclude recency + inactivity']
 depths, leaves = [2,3,4,5], [5,15,30]
 configs = list(itertools.product(range(4), range(4), range(3)))
 folds = list(StratifiedKFold(3, shuffle=True, random_state=23).split(X_dev,y_dev))

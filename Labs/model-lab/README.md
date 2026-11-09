@@ -45,4 +45,4 @@ The optional original notebook is not required for this revised lab. The lecture
 
 ## GitHub Pages
 
-Serve the `docs` directory from the `main` branch. The lab is at `model-lab/` under the repository's Pages site. The repository file viewer alone does not execute the lab. Alternatively download this folder and open `index.html`; data are loaded as a local script, with no fetch request or server requirement.
+The source lives in `Labs/model-lab/`. Download this folder and open `index.html` in a browser. A GitHub repository page displays source files; publishing a website requires a separate hosting configuration.

@@ -10,4 +10,4 @@ Follow the links from Moodle to the relevant week or challenge. Materials will b
 
 ## Visual lab
 
-[AutoML and SHAP lab files and guide](docs/model-lab/) accompany the lecture on selection, evolutionary search and explanations. Open the hosted GitHub Pages lab after Pages is enabled, or download the folder and open `index.html`.
+[AutoML and SHAP lab files and guide](Labs/model-lab/) accompany the lecture on selection, evolutionary search and explanations. Download the folder and open `index.html` in a browser.

@@ -1,10 +1,10 @@
 'use strict';
-const D=window.LAB_DATA,M=D.models,$=id=>document.getElementById(id),pct=v=>(100*v).toFixed(1)+'%',pp=v=>(v>=0?'+':'')+(100*v).toFixed(1),names=['Both signals','Recency only','Inactivity only','Neither signal'];
+const D=window.LAB_DATA,M=D.models,$=id=>document.getElementById(id),pct=v=>(100*v).toFixed(1)+'%',pp=v=>(v>=0?'+':'')+(100*v).toFixed(1),names=['Recency + inactivity','Recency only','Inactivity only','Exclude recency + inactivity'];
 let manual=[],run,timer=null,revealed=0;
 const idFrom=c=>c[0]*12+c[1]*3+c[2],bestPrecision=Math.max(...M.filter(m=>m.eligible).map(m=>m.precision));
 function rank(a,b){let A=M[a],B=M[b];return Number(B.eligible)-Number(A.eligible)||(A.eligible?B.precision-A.precision:B.recall-A.recall)||a-b}
 function best(ids){return [...ids].filter(i=>M[i].eligible).sort(rank)[0]}
-function recipe(){let c=[$('features').selectedIndex,$('depth').selectedIndex,$('leaf').selectedIndex],m=M[idFrom(c)];$('inputnames').textContent=(c[0]===0?'Recency, inactivity':c[0]===1?'Recency':c[0]===2?'Inactivity':'No activity signal')+', complaints, tenure, noise';$('settings').textContent=`Depth ${m.depth}, minimum leaf ${m.leaf}`;return m}
+function recipe(){let c=[$('features').selectedIndex,$('depth').selectedIndex,$('leaf').selectedIndex],m=M[idFrom(c)];$('inputnames').textContent=(c[0]===0?'Recency, inactivity':c[0]===1?'Recency':c[0]===2?'Inactivity':'Neither recency nor inactivity')+', complaints, tenure, noise';$('settings').textContent=`Depth ${m.depth}, minimum leaf ${m.leaf}`;return m}
 function evaluate(){let m=recipe();if(!manual.includes(m.id))manual.push(m.id);let b=best(manual);$('manualresult').textContent=`M${m.id}: precision ${pct(m.precision)}, recall ${pct(m.recall)}. ${m.eligible?'Passes the recall rule.':'Fails the recall rule.'} `+(b===undefined?'No eligible candidate evaluated yet.':`Best eligible candidate evaluated so far: M${b}.`);$('manualtable').innerHTML=manual.map(i=>{let x=M[i];return `<tr><td>M${i}${i===b?' ★':''}</td><td>${x.features}</td><td>${x.depth} / ${x.leaf}</td><td>${pct(x.precision)}</td><td>${pct(x.recall)}</td><td>${x.eligible?'Yes':'No'}</td></tr>`}).join('')}
 function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function pause(){clearInterval(timer);timer=null;$('play').textContent='Play'}

@@ -6,3 +6,5 @@ Lecture materials will be added by week.
 
 - [Week 01](week-01/)
 - [Week 02](week-02/)
+
+- [AutoML, SHAP and Explanation Stability](week-07/AutoML_SHAP_and_Explanation_Stability.pdf)

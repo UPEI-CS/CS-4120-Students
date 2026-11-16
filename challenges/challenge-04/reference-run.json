@@ -1,0 +1,371 @@
+{
+  "schema": "cs4120.challenge04.v1",
+  "features": [
+    "recency_days",
+    "orders",
+    "spend",
+    "units",
+    "products"
+  ],
+  "train_n": 1959,
+  "valid_n": 2025,
+  "validation_prevalence": 0.4849382716049383,
+  "search": [
+    {
+      "name": "Logistic C=0.1",
+      "configuration": "log1p + training-only scaler; C=0.1",
+      "fit_seconds": 0.0193123328499496,
+      "validation_AP": 0.6470884447840282,
+      "top20_precision": 0.7209876543209877
+    },
+    {
+      "name": "Logistic C=1",
+      "configuration": "log1p + training-only scaler; C=1",
+      "fit_seconds": 0.013753416948020458,
+      "validation_AP": 0.6464068452991544,
+      "top20_precision": 0.7135802469135802
+    },
+    {
+      "name": "Logistic C=10",
+      "configuration": "log1p + training-only scaler; C=10",
+      "fit_seconds": 0.0024256668984889984,
+      "validation_AP": 0.6463959346200993,
+      "top20_precision": 0.7135802469135802
+    },
+    {
+      "name": "Forest depth=3",
+      "configuration": "150 trees; depth=3; min leaf=10; seed=4120",
+      "fit_seconds": 0.13576583401300013,
+      "validation_AP": 0.6456781294975349,
+      "top20_precision": 0.6962962962962963
+    },
+    {
+      "name": "Forest depth=6",
+      "configuration": "150 trees; depth=6; min leaf=10; seed=4120",
+      "fit_seconds": 0.1945838329847902,
+      "validation_AP": 0.6375506043008221,
+      "top20_precision": 0.674074074074074
+    },
+    {
+      "name": "Prior baseline",
+      "configuration": "Constant training prevalence",
+      "fit_seconds": 0.00036329193972051144,
+      "validation_AP": 0.4849382716049383,
+      "top20_precision": 0.454320987654321
+    }
+  ],
+  "winner": {
+    "name": "Logistic C=0.1",
+    "validation_AP": 0.6470884447840282,
+    "top20_precision": 0.7209876543209877,
+    "explanations": [
+      {
+        "probability": 0.10848621254162542,
+        "base_value": 0.5985878081190138,
+        "shap": [
+          0.005088400632066366,
+          -0.3975155484678951,
+          -0.00794941733602884,
+          -0.013951785753254096,
+          -0.07577324465227675
+        ],
+        "additivity_error": 4.163336342344337e-17
+      },
+      {
+        "probability": 0.5944315750215388,
+        "base_value": 0.5985878081190138,
+        "shap": [
+          -0.033712837885236095,
+          0.06114765238935314,
+          -0.01682239892976288,
+          -0.018528529972630266,
+          0.003759881300801176
+        ],
+        "additivity_error": 1.1102230246251565e-16
+      },
+      {
+        "probability": 0.7031768139068254,
+        "base_value": 0.5985878081190138,
+        "shap": [
+          -0.02147423500912721,
+          0.06024708061156992,
+          0.01693432137443565,
+          0.017635957022050126,
+          0.03124588178888312
+        ],
+        "additivity_error": 0.0
+      }
+    ]
+  },
+  "seed_runs": [
+    {
+      "seed": 4120,
+      "validation_AP": 0.6375506043008221,
+      "top20_precision": 0.674074074074074,
+      "explanations": [
+        {
+          "probability": 0.18751391713203075,
+          "base_value": 0.5781816952093026,
+          "shap": [
+            -0.015044128711571464,
+            -0.2705140531878687,
+            -0.0627975865410286,
+            0.016282298356597304,
+            -0.05859430799340049
+          ],
+          "additivity_error": 1.1102230246251565e-16
+        },
+        {
+          "probability": 0.5600688753015084,
+          "base_value": 0.5781816952093026,
+          "shap": [
+            -0.009148966388130767,
+            0.06575144175293891,
+            -0.04869245749078002,
+            -0.04635146482469942,
+            0.020328627042877054
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.7607386545570569,
+          "base_value": 0.5781816952093026,
+          "shap": [
+            -0.006116524987031673,
+            0.05044925535699686,
+            0.049676928641160994,
+            0.04106007036213556,
+            0.04748722997449255
+          ],
+          "additivity_error": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 4121,
+      "validation_AP": 0.6363406437586656,
+      "top20_precision": 0.6839506172839506,
+      "explanations": [
+        {
+          "probability": 0.19565623755569334,
+          "base_value": 0.5791975327166559,
+          "shap": [
+            -0.016036257420557525,
+            -0.2591577845866391,
+            -0.04994710755596041,
+            0.018972853681072897,
+            -0.07737299927887846
+          ],
+          "additivity_error": 5.551115123125783e-17
+        },
+        {
+          "probability": 0.5599545982987258,
+          "base_value": 0.5791975327166559,
+          "shap": [
+            -0.012450989593777707,
+            0.0664626689955326,
+            -0.04079919159747223,
+            -0.03749880333130459,
+            0.005043381109091907
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.7843223708358307,
+          "base_value": 0.5791975327166559,
+          "shap": [
+            -0.008324491746835156,
+            0.051697410086036996,
+            0.04641552590880748,
+            0.05606580083399172,
+            0.059270593037173774
+          ],
+          "additivity_error": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 4122,
+      "validation_AP": 0.6374705226590583,
+      "top20_precision": 0.6839506172839506,
+      "explanations": [
+        {
+          "probability": 0.20326422885773923,
+          "base_value": 0.5771447172400073,
+          "shap": [
+            -0.014509160775756905,
+            -0.24359074403932074,
+            -0.053956324887444174,
+            0.013569747218351948,
+            -0.07539400589809823
+          ],
+          "additivity_error": 8.326672684688674e-17
+        },
+        {
+          "probability": 0.5483358629703388,
+          "base_value": 0.5771447172400073,
+          "shap": [
+            -0.004302056500899795,
+            0.06649816526802038,
+            -0.048079831903938136,
+            -0.0507728663690314,
+            0.007847735236180462
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.7638702641963051,
+          "base_value": 0.5771447172400073,
+          "shap": [
+            -0.012947514846100945,
+            0.050429746466365714,
+            0.04701767160779968,
+            0.05368019568381624,
+            0.04854544804441715
+          ],
+          "additivity_error": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 4123,
+      "validation_AP": 0.6391550702861748,
+      "top20_precision": 0.674074074074074,
+      "explanations": [
+        {
+          "probability": 0.2272590981593152,
+          "base_value": 0.576802239055604,
+          "shap": [
+            -0.013224926197043576,
+            -0.26548070665829265,
+            -0.040789160302281226,
+            0.024878999387643475,
+            -0.05492734712631487
+          ],
+          "additivity_error": 2.7755575615628914e-17
+        },
+        {
+          "probability": 0.5956370559265287,
+          "base_value": 0.576802239055604,
+          "shap": [
+            -0.006271588421023353,
+            0.07208875800179662,
+            -0.03417702219242332,
+            -0.030749851811641762,
+            0.017944521294216538
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.7557112037161101,
+          "base_value": 0.576802239055604,
+          "shap": [
+            -0.008650679161438758,
+            0.05413131186390688,
+            0.043505253407229966,
+            0.05029288284166214,
+            0.039630195709145874
+          ],
+          "additivity_error": 0.0
+        }
+      ]
+    },
+    {
+      "seed": 4124,
+      "validation_AP": 0.6376989875546512,
+      "top20_precision": 0.6814814814814815,
+      "explanations": [
+        {
+          "probability": 0.20513474324497277,
+          "base_value": 0.5839209717471583,
+          "shap": [
+            -0.011299653085047167,
+            -0.26904053509524745,
+            -0.05867580600685553,
+            0.021140247552147794,
+            -0.06091048186718316
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.560282839275817,
+          "base_value": 0.5839209717471583,
+          "shap": [
+            -0.0068415513056729795,
+            0.06561702340280941,
+            -0.05121245026885086,
+            -0.039962819079075396,
+            0.008761664779448555
+          ],
+          "additivity_error": 0.0
+        },
+        {
+          "probability": 0.7681927892023327,
+          "base_value": 0.5839209717471583,
+          "shap": [
+            -0.009259377588859589,
+            0.05680427522102896,
+            0.04213301202109475,
+            0.047666752067289,
+            0.04692715573462128
+          ],
+          "additivity_error": 0.0
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "label": "Lower reference risk",
+      "validation_row_position": 2023,
+      "values": [
+        17.444444444444443,
+        5.0,
+        521.63,
+        353.0,
+        102.0
+      ]
+    },
+    {
+      "label": "Middle reference risk",
+      "validation_row_position": 654,
+      "values": [
+        79.40555555555555,
+        1.0,
+        726.1,
+        377.0,
+        17.0
+      ]
+    },
+    {
+      "label": "Higher reference risk",
+      "validation_row_position": 1581,
+      "values": [
+        53.55833333333333,
+        1.0,
+        163.69,
+        72.0,
+        10.0
+      ]
+    }
+  ],
+  "provenance": {
+    "kind": "real-data",
+    "archive_sha256": "572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb",
+    "raw_rows": 1067371,
+    "clean_rows": 779425,
+    "created_utc": "2026-11-16T15:09:25+00:00",
+    "versions": {
+      "python": "3.12.7",
+      "numpy": "1.26.4",
+      "pandas": "2.2.2",
+      "sklearn": "1.5.2"
+    },
+    "background_sha256": "9c078dc480e4864773cc32da7ad8b0eda23fb308eb85c173c2a5832250a0c9c6",
+    "cases_sha256": "6f55d87a7f402b6d8133f606ac2c23a588383ad7602ed0201020f6a66e521154",
+    "shap_method": "Exact enumeration of all 32 coalitions; positive-class predicted probability; marginal feature replacement averaged over the same training-background rows. Correlated-feature combinations may be unrealistic. These are Shapley values for that specified game, not causal or conditional effects.",
+    "background_note": "32 training rows sampled once with seed 2026; identical rows for every model and seed. Background-size uncertainty is not measured.",
+    "role": "reference"
+  },
+  "run_id": "b8749ce30b4e9bf9"
+}
